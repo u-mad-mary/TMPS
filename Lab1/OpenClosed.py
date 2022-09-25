@@ -1,39 +1,66 @@
 from abc import ABC, abstractmethod
-from SingleResponsability import ArtShop
 
-class ArtPiece(ABC):
+#class for counting the purchase sum.
+class ArtShop:
     
-    def type(self, name, width, length, hours_to_paint):
+    names = []
+    items = []
+    prices = []
+    
+    def buy(self, name, item, price):
+        self.names.append(name)
+        self.items.append(item)
+        self.prices.append(price)
+        
+    def sum(self):
+        total = 0
+        for i in range(len(self.items)):
+            total += self.items[i]* self.prices[i]
+        return total
+
+#Class for establishing the Order Details.
+class OrderDetails:
+    def __init__(self, name, width, length, hours_to_paint):
         self.name = name
         self.width = width
         self.length = length
         self.hours_to_paint = hours_to_paint 
-        print(f"The client has requested a piece of artwork which represents a {name}.")
-        
+        print(f"The client has requested a piece of artwork which represents a {name}.") 
+           
+#Class with an abstract method.
+class ArtPiece(ABC):       
     @abstractmethod       
-    def complexity(self):
-        canvas_size = self.width * self.length
-        complexity = canvas_size * self.hours_to_paint
-        return complexity
-      
+    def complexity(self, width, length, hours_to_paint):
+        pass
+ 
+#Class for calculating the complexity of a piece of artwork, specifically a Painting.  Inherits from ArtPiece class.      
 class Painting(ArtPiece):
-    
-    def complexity(self):
+       
+    def complexity(self, width, length, hours_to_paint):
         print('The client specified that he/she wants a painting.')
-        return super().complexity()*0.2
-              
+        canvas_size = width * length
+        complexity = canvas_size * hours_to_paint
+        return complexity*0.2
+
+#Class for calculating the complexity of a piece of artwork, specifically a Drawing. Inherits from ArtPiece class.            
 class Drawing(ArtPiece):
-    
-    def complexity(self):
+ 
+    def complexity(self, width, length, hours_to_paint):
         print('The client specified that he/she wants a drawing.')
-        return super().complexity()*0.1       
-        
+        canvas_size = width * length
+        complexity = canvas_size * hours_to_paint
+        return complexity*0.1       
+
+#Class for calculating the complexity of a piece of artwork, specifically a Decorative Artpiece. Inherits from ArtPiece class.            
 class DecorativeArt(ArtPiece):
     
-    def complexity(self):
+    def complexity(self, width, length, hours_to_paint):
         print('The client specified that he/she wants a decorative piece of art.')
-        return super().complexity()*0.05
+        canvas_size = width * length
+        complexity = canvas_size * hours_to_paint
+        return complexity*0.05
         
+#Class for calculating the artwork price.
 class PiecePrice():  
                  
     def piece_price(self, comp, sum):
@@ -50,22 +77,22 @@ spendings.buy('palette',1, 10)
 sum = spendings.sum()
 print("The shop spendings are " + str(sum) + " $.\n")
 
-art = PiecePrice()
+p = PiecePrice()
 
-dr = Painting()
-dr.type('peisage',2,3,30)
-comp = dr.complexity()
-art.piece_price(comp, sum)
+od = OrderDetails('peisage',2,3,30)
+art = Painting()
+comp = art.complexity(od.width,od.length,od.hours_to_paint)
+p.piece_price(comp, sum)
 
-dr = Drawing()
-dr.type('bird',2,3,5)
-comp = dr.complexity()
-art.piece_price(comp, sum)
+od = OrderDetails('bird',2,3,5)
+art = Drawing()
+comp = art.complexity(od.width,od.length,od.hours_to_paint)
+p.piece_price(comp, sum)
 
-dr = DecorativeArt()
-dr.type('cat',1,0.5,10)
-comp = dr.complexity()
-art.piece_price(comp, sum)
+od = OrderDetails('cat',1,0.5,10)
+art = DecorativeArt()
+comp = art.complexity(od.width,od.length,od.hours_to_paint)
+p.piece_price(comp, sum)
 
 
 
