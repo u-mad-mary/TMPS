@@ -1,3 +1,6 @@
+#A class should have one and only one reason to change, 
+#meaning that a class should have only one job.
+
 #class responsible for counting the total sum of a purchase in an Art Shop
 class ArtShop:
     

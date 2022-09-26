@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+#A class should be extendable without modifying the class itself.
+
 #class for counting the purchase sum.
 class ArtShop:
     

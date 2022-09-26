@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 
+#The principle defines that objects of a superclass shall be replaceable 
+#with objects of its subclasses without breaking the application.
+
 #class for initialising art pieces characteristics
 class Characteristics:
     def __init__(self, name, oil_paint, pencil, canvas):
@@ -20,7 +23,7 @@ class Canvas(Draw):
         self.canvas_size = canvas_size
 
     def draw(self, object):
-        print(f'The painter choose to {object} {self.canvas_size} sized canvas.')
+        print(f'The painter choose to {object} {self.canvas_size} m^2 sized canvas.')
 
 #class for choosing a pencil for drawing. Inherits from Draw.
 class Sketch(Draw):
@@ -47,7 +50,7 @@ class Painter:
         self.painter.draw(object)
 
 #setting artpiece characteristics
-art_piece = Characteristics('Dame in red', 'white, red, black, blue, brown', 'HB, B1', '2x3m')
+art_piece = Characteristics('Dame in red', 'white, red, black, blue, brown', 'HB, B1', 6)
 
 choose_canvas = Canvas(art_piece.canvas)
 make_a_sketch = Sketch(art_piece.pencil)
