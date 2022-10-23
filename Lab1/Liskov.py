@@ -41,7 +41,7 @@ class Painting(Draw):
     def draw(self, object):
         print(f'The painter {object} using {self.oil_paint_colors} oil paint colors.')
 
-#class for starting the painter's drawing process with the given materials.      
+#class for starting the painter's drawing process with the given tools.      
 class Painter:
     def __init__(self, painter):
         self.painter = painter
