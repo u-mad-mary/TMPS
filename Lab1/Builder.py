@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 
+# The builder as a creational design pattern lets you construct
+# a complex system step by step. The pattern lets you construct different objects, each out of subset of already-built components.
+
 #components used for artpiece
 class Canvas:
     size = None

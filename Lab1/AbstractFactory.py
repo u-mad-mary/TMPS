@@ -4,7 +4,8 @@ from Singleton import *
 from Factory import ArtTypeFactory
 from Builder import *
 
-# Abstract Factory is used when several related classes have to be created according to a common theme.
+# The abstract factory lets you create a family of related objects without specifying the concrete class. In other words, 
+# you can call the families of class just via one single interface.
 
 class Canvas(ABC):
     
@@ -17,6 +18,7 @@ class Canvas(ABC):
 
 
 class Easel(ABC):
+    
     @abstractmethod
     def get(self):
         pass
@@ -26,6 +28,7 @@ class Easel(ABC):
 
 
 class Tools(ABC):
+    
     @abstractmethod
     def get_material(self):
         pass
@@ -35,14 +38,15 @@ class ChooseArt(ArtTypeFactory):
     def get_type(self, artist):
         artpieces = ["Drawing", "Painting", "Decorative"]
         return ArtTypeFactory.choose_artpiece(artpieces[1]).artpiece(artist)
-        
-            
+           
 class ChooseCanvas(Canvas):
+    
     def take(self, c, size):
         return f'Canvas {c} of size {size} was successfully chosen.'
 
 
 class ChooseEasel(Easel):
+    
     def get(self, e, brand):
         return f'Easel {e} of brand {brand} is now in use.'
     
@@ -53,7 +57,7 @@ class ChooseTools(Tools):
         return f'The artist works with {materials}.'
     
 
-class ArtPieceFactory(ABC):
+class ArtPieceFactory(ABC): 
     
     @abstractmethod
     def get_artpiece_type():
@@ -73,6 +77,7 @@ class ArtPieceFactory(ABC):
 
 
 class CreateArtFactory(ArtPieceFactory):
+    
     @staticmethod
     def get_artpiece_type():
         return ChooseArt()

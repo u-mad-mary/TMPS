@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # colored piece of work(involves the use of oilpainting and larger canvases) or a monochrome one(pencils are used along with smaller canvases) ###
     
     peisage = Colored()
-    portret = Monochrome()
+    #portret = Monochrome()
     creation = Creation()
 
     creation.set_builder(peisage)

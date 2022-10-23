@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 
+#The factory method is a creational design pattern that provides an interface for a 
+#superclass to call and create an object with the type of the object created can be controlled and determined by the subclass.
+
 class ArtType(ABC):
     
     @abstractmethod
