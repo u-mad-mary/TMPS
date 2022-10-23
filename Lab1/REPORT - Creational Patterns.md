@@ -1,11 +1,11 @@
 # Creational Design Patterns
 
-## Objectives:
+## Objectives
 
 * Get familiar with the Creational Design Patterns;
 * Implement at least 5 CDPs for a specific domain;
 
-## Used Design Patterns:
+## Used Design Patterns
 
 * Singleton
 * Object Pool
@@ -39,7 +39,8 @@ class Singleton(type):
 
 The Artist class uses Singleton as metaclass which makes it a Singleton.
 
-```
+```python
+
 class Artist(metaclass=Singleton):
     def painter(self, name):
         print(f"{name} is the artist that is currently working.\n")
@@ -143,7 +144,7 @@ class ArtBuilder(ABC):
         pass
  ```
 
- It will be used for creating concrete builders that will have established canvas size, easel brand and the material for drawing.
+It will be used for creating concrete builders that will have established canvas size, easel brand and the material for drawing.
 
 Next can be seen the Creation class that is responsible for setting the needed objects using the ArtPiece class.
 
@@ -185,6 +186,7 @@ class ArtType(ABC):
     def artpiece(self, artist):
         pass
 ```
+
 There are 3 subclasses that are used in the ArtTypeFactory() class for choosing the desired type:
 
 ```python
@@ -204,6 +206,7 @@ class ArtTypeFactory:
         except AssertionError as e:
             print(e)
 ```
+
 In case a type other than a listed one is used, the program will output an error message.
 
 This class is also used in Abstract Factory for establishing the art piece characteristics.
@@ -214,7 +217,7 @@ The abstract factory allows creation of a family of related objects without spec
 
 The painter created through the Singleton has to establish the proprieties of canvas, easel, and the main tool for painting, choosing at the start the art type (set in Factory) of the artwork that establishes which proprieties will be convenient for the mentioned tools.
 
-The class ArtPieceFactory() serves as Abstract Factory that puts together families of objects (different object of abstract factories (Canvas, Easel, Tools)) that should be established:
+The class ArtPieceFactory() serves as Abstract Factory that puts together families of objects (different objects of base classes (Canvas, Easel, Tools)) that should be established:
 
 ```python
 class ArtPieceFactory(ABC):
@@ -264,7 +267,7 @@ Here is also used the Object Pool pattern for establishing the available and use
 
 The results of the mentioned implementation of different Creational Design Patterns can be viewed after running the ```main.py``` file, the output showld be the following:
 
-```
+```txt
 ============ Welcome to the Art Studio. ============
 
 Here you can take a glance at the working processs of an artist!
