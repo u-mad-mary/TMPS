@@ -1,6 +1,4 @@
-#This pattern restricts the instantiation of a class to one object. 
-#It is a type of creational pattern and involves only one class to create methods and specified objects.
-#It provides a global point of access to the instance created.
+# Singleton allows to be sure that there is only one single instantiation of one class and it is accessible globally.
 
 class Singleton(type):
 

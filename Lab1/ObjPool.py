@@ -1,10 +1,16 @@
+# The Object Pool design pattern uses a pool of initialized objects that are ready to be used rather than creating a new object all the time. 
+# The main idea of an Object Pool is that instead of creating instances of the class you can reuse them by getting them from the pool.
+# It manages a fixed number of instances.
+
+
 class Tool:
             
     def tool(self, nr):
         return nr
         
-class PoolManager:
-    def __init__(self,pool):
+class PoolManager: #automaticlly acquires and releases objects
+    
+    def __init__(self, pool):
         self.pool = pool
         
     def __enter__(self):
@@ -28,13 +34,14 @@ class ToolPool:
     def acquire(self) -> Tool:
         if len(self.free) <= 0:
             raise Exception("No more available tools.")
-        c = self.free[0]
-        self.free.remove(c)
-        self.in_use.append(c)
-        return c
+        
+        t = self.free[0]
+        self.free.remove(t)
+        self.in_use.append(t)
+        return t
     
-    def release(self, c: Tool):
-        self.in_use.remove(c)
-        self.free.append(c)
-        return c
+    def release(self, t: Tool):
+        self.in_use.remove(t)
+        self.free.append(t)
+        return t
         
