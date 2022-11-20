@@ -1,8 +1,30 @@
+from abc import ABC, abstractmethod
 from Facade import *
-from Bridge import Alco, AlcoholFree
 
 # This pattern involves a single class which is responsible to join functionalities 
 # of independent or incompatible interfaces. 
+
+# Alco class interface 
+class Alco(ABC):
+    
+    @abstractmethod
+    def is_alcohol():
+        pass
+
+    @abstractmethod
+    def pour_alcohol():
+        pass
+
+
+# AlcoholFree class interface
+class AlcoholFree(ABC):
+    @abstractmethod
+    def is_alcoFree():
+        pass
+
+    @abstractmethod
+    def pour_liquid():
+        pass
 
 
 class AlcoDrink(Alco):
@@ -40,7 +62,7 @@ class AlcoholFreeDrink(AlcoholFree):
         return f'{self.ingredient} is poured into the shaker.'
 
     def add_to_drink(self):
-        pass
+        return f'{self.item} is added into the drink.'
 
 
 class Adapter(AlcoDrink):
@@ -54,7 +76,7 @@ class Adapter(AlcoDrink):
         if isinstance(self, AlcoDrink):
             return f'{self.stuff.is_alcoFree()}, it is a non alcoholic liquid that will be added with {self.item} into the drink.'
         else:
-            return f'{self.ingredient} is a totally alcohol free drink.'
+            return f'{self.item} is alcohol free.'
     
     def prepare(self):
         prep = DrinkPreparation()
