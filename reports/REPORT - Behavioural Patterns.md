@@ -68,7 +68,7 @@ Everything starts with an interface, in this case with a concrete commands inter
 
 The process of a customer order is the following, the Customer sends the command (order):
 
-```pyhton
+```python
 class Customer:
     def __init__(self, command: Command):
         self._command = command
