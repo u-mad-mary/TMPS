@@ -9,14 +9,12 @@ def main():
     waiter = Waiter()
     barman = Barman()
 
-    new_waiter.set_next_handler(waiter).set_next_handler(barman)
+    new_waiter.setting_next_handler(waiter).setting_next_handler(barman)
     new_waiter_han(new_waiter)
   
     waiter_rec = WaiterRecieve()
-    barman_rec = BarmanRecieve()
 
     command_waiter = OrderWaiter(waiter_rec)
-    command_waiter_sends_bar = OrderWaiter(barman_rec)
 
     customer0 = Customer(command_waiter)
 

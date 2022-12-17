@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
 
 
-# interface for handlers
 class Handler(ABC):
     @abstractmethod
-    def set_next_handler(self, handler):
+    def setting_next_handler(self, handler):
         pass
 
     @abstractmethod
@@ -12,19 +11,18 @@ class Handler(ABC):
         pass
 
 
-# abstract class for concrete handlers
 class AbstractHandler(Handler, ABC):
-    _next_handler = None
+    next_handler = None
     can_take_order = False
 
-    def set_next_handler(self, handler: Handler):
-        self._next_handler = handler
+    def setting_next_handler(self, handler: Handler):
+        self.next_handler = handler
         return handler
 
     @abstractmethod
     def handle(self, order):
-        if self._next_handler:
-            return self._next_handler.handle(order)
+        if self.next_handler:
+            return self.next_handler.handle(order)
 
         return None
 
