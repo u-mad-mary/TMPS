@@ -67,6 +67,7 @@ It is a behavioural design pattern that encapsulates a request as an object, the
 Everything starts with an interface, in this case with a concrete commands interface which holds the "order" method.
 
 The process of a customer order is the following, the Customer sends the command (order):
+
 ```pyhton
 class Customer:
     def __init__(self, command: Command):
